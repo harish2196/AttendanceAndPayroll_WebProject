@@ -146,6 +146,7 @@
             <ul>
                 <li><a href="AdminDashboard.jsp"><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="Contact.jsp"><i class="fas fa-user"></i> Contact</a></li>
+                <li><a href="Contact.jsp"><i class="fas fa-comment"></i> Comments</a></li>
                 <li><a href="switch.jsp"><i class="fas fa-envelope"></i> Messages</a></li>
                
                 <li> <form action="Login" method="get">  
@@ -168,7 +169,6 @@
         <button style="font-size: 17px;font-weight: bold;color:black;" type="submit">View Details</button>
     </form>
 </div>
-
             <div class="card">
                 <i class="fas fa-users"></i>
                 <h3>Checkin'S & Checkout'S</h3>
@@ -184,6 +184,8 @@
     <button style="font-size: 17px;font-weight: bold;color:black;" type="submit" value="submit">View Details</button>            
 </form>
             </div>
+            
+            
         </div>
     </div>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>

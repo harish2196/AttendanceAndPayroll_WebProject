@@ -736,6 +736,30 @@ public class QueryManager {
 		return userList;
 	}
 
+	public static void insertReport(String empCode, String name, String comments) throws ClassNotFoundException, SQLException {
+	    String insertQuery = "INSERT INTO admin_report (emp_code, name, report_text) VALUES (?, ?, ?)";
+
+	    try (Connection connection = DBManager.getConnection();
+	         PreparedStatement stmt = connection.prepareStatement(insertQuery)) {
+	        stmt.setString(1, empCode);
+	        stmt.setString(2, name);
+	        stmt.setString(3, comments);
+
+	        int rowsInserted = stmt.executeUpdate();
+
+	        if (rowsInserted > 0) {
+	            System.out.println("New report was inserted successfully!");
+	        } else {
+	            System.out.println("No report was inserted.");
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();	    
+	    }
+	}
+
+	
+	
+	
 }
 
 

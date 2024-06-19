@@ -345,14 +345,12 @@ if(session.getAttribute("name") == null){
         </div>
         
         <div class="custom-dropdown">
-        <form action="PayrollCalculations" class="a1" method="post">
-    <button type="submit" value="submit">Admin Report</button>            
-</form>
-            <i class="fa fa-caret-down"></i>
+     
+        <button type="button" onclick="window.location.href='AdminReport.jsp'">Admin Report</button>
+    </a>          
+         
 
-    </a>
 </div>
-        </div>
          <div class="custom-dropdown">
             <button class="custom-dropbtn">Status
                 <i class="fa fa-caret-down"></i>
