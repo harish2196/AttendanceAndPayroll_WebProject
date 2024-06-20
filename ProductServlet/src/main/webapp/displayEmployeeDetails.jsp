@@ -167,6 +167,18 @@
      margin-top:10%;
    
 }
+   .btn-search {
+            background-color: green;
+            border-color: green;
+            color: white;
+            padding: 3.3px 7px;
+            margin-left:0.2%;
+            margin-top:-0.2%;
+        }
+        .btn-search:hover {
+            background-color: darkgreen;
+            border-color: darkgreen;
+        }
     </style>
 </head>
 
@@ -209,7 +221,11 @@
 
   
 
-    <h1 style="margin-bottom:2%;margin-top:2%;">Employee Personal Details</h1>
+    <h1 style="margin-bottom:1%;margin-top:2%;">Employee Personal Details</h1>
+     <form action="SearchByCode" method="post">  
+         <input style="margin-left:38.5%;margin-bottom:2%" type="text" name="empcode" placeholder="Search EmpCode">      
+        <input type="submit" value="Search" class="btn btn-search">
+    </form>
     <table>
         <thead>
             <tr>
@@ -219,6 +235,7 @@
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>Salary</th>
+                <th>Image</th>
                 <th></th>
                 <th>Actions</th>
                 <th></th>
@@ -236,6 +253,9 @@
                 <td><%= user.getEmail() %></td>
                 <td><%= user.getMobile() %></td>
                 <td><%= user.getSalary() %></td>
+                 <td>
+                    <img src="RetrieveImage?emp_code=<%= user.getEmpCode() %>" alt="Employee Image" width="100" height="100"/>
+                </td>
                 <td class="button-container">                   
                         <input type="hidden" name="action" value="update"> 
                         <input type="hidden" name="id" value="<%= user.getEmpCode() %>">

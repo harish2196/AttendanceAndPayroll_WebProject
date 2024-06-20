@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 
 public class QueryManager {
-	
+
 	public static void insertData(User user, String empCode) throws SQLException, ClassNotFoundException {
 		Connection connection = DBManager.getConnection();
 		String leaveInserting = "INSERT INTO Leave_report (emp_code, name, from_date, to_date, leave_type) VALUES (?, ?, ?, ?, ?)";
@@ -27,7 +27,7 @@ public class QueryManager {
 			System.out.println("Data insertion failed.");
 		}
 	}
-	
+
 	public static boolean updateEmployeeData(User user, String empCode) throws SQLException, ClassNotFoundException {
 		boolean success = false;
 
@@ -265,7 +265,7 @@ public class QueryManager {
 		}
 	}
 
-	
+
 	public static boolean updatePermissionStatus(String empCode, String status) throws SQLException, ClassNotFoundException {
 		boolean isSuccess = false;
 
@@ -577,7 +577,7 @@ public class QueryManager {
 
 		return userList;
 	}
-	
+
 	public static String getEmployeeName(String empCode) throws ClassNotFoundException, SQLException {
 
 		Connection connection = DBManager.getConnection();
@@ -736,30 +736,87 @@ public class QueryManager {
 		return userList;
 	}
 
+	public static ArrayList<User> searchEmployee(String empCode) throws ClassNotFoundException, SQLException {
+		ArrayList<User> userList = new ArrayList<>();
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection connection = DBManager.getConnection();
+		String query = "SELECT emp_code, username, designation,useremail,usermobile,salary FROM Employee_details WHERE emp_code LIKE ?";
+		PreparedStatement prepareStatement = connection.prepareStatement(query);
+		prepareStatement.setString(1, "%" + empCode + "%");
+		ResultSet resultSet = prepareStatement.executeQuery();
+		while (resultSet.next()) {
+			User user = new User();
+			user.setEmpCode(resultSet.getString("emp_code"));
+			user.setName(resultSet.getString("username"));
+			user.setRole(resultSet.getString("designation"));
+			user.setEmail(resultSet.getString("useremail"));
+			user.setMobile(resultSet.getString("usermobile"));
+			user.setSalary(resultSet.getString("salary"));	
+			userList.add(user);
+		}
+		return userList;
+	}
+	public static ArrayList<User> searchEmployeeComments(String empCode) throws ClassNotFoundException, SQLException {
+		ArrayList<User> userList = new ArrayList<>();
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection connection = DBManager.getConnection();
+		String query = "SELECT emp_code,name,report_text FROM admin_report WHERE emp_code LIKE ?";
+		PreparedStatement prepareStatement = connection.prepareStatement(query);
+		prepareStatement.setString(1, "%" + empCode + "%");
+		ResultSet resultSet = prepareStatement.executeQuery();
+		while (resultSet.next()) {
+			User user = new User();
+			user.setEmpCode(resultSet.getString("emp_code"));
+			user.setName(resultSet.getString("name"));
+			user.setText(resultSet.getString("report_text"));
+			userList.add(user);
+		}
+		return userList;
+	}
+	
+	
+	
 	public static void insertReport(String empCode, String name, String comments) throws ClassNotFoundException, SQLException {
-	    String insertQuery = "INSERT INTO admin_report (emp_code, name, report_text) VALUES (?, ?, ?)";
+		String insertQuery = "INSERT INTO admin_report (emp_code, name, report_text) VALUES (?, ?, ?)";
 
-	    try (Connection connection = DBManager.getConnection();
-	         PreparedStatement stmt = connection.prepareStatement(insertQuery)) {
-	        stmt.setString(1, empCode);
-	        stmt.setString(2, name);
-	        stmt.setString(3, comments);
+		try (Connection connection = DBManager.getConnection();
+				PreparedStatement stmt = connection.prepareStatement(insertQuery)) {
+			stmt.setString(1, empCode);
+			stmt.setString(2, name);
+			stmt.setString(3, comments);
 
-	        int rowsInserted = stmt.executeUpdate();
+			int rowsInserted = stmt.executeUpdate();
 
-	        if (rowsInserted > 0) {
-	            System.out.println("New report was inserted successfully!");
-	        } else {
-	            System.out.println("No report was inserted.");
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();	    
-	    }
+			if (rowsInserted > 0) {
+				System.out.println("New report was inserted successfully!");
+			} else {
+				System.out.println("No report was inserted.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();	    
+		}
 	}
 
-	
-	
-	
+
+	public static ArrayList<User> readReports() throws ClassNotFoundException, SQLException {
+		String readQuery = "SELECT emp_code, name, report_text FROM admin_report";
+		ArrayList<User> userList = new ArrayList<>();
+		Connection connection = DBManager.getConnection();
+		PreparedStatement stmt = connection.prepareStatement(readQuery);
+		ResultSet resultSet = stmt.executeQuery();
+
+		while (resultSet.next()) {
+			User user = new User();	          
+			user.setEmpCode(resultSet.getString("emp_code"));
+			user.setName(resultSet.getString("name"));
+			user.setText(resultSet.getString("report_text"));
+			userList.add(user);
+		}
+		return userList;
+
+	}
+
+
 }
 
 

@@ -4,8 +4,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permission Form</title>
+    </head>
     <style>
         body {
             margin: 0%;
@@ -81,7 +84,6 @@
             background-color: #004085;
         }
     </style>
-</head>
 
 <body>
     <div class="photo">
@@ -90,8 +92,7 @@
                 <h2 style="margin-left:70px;">Permission Form</h2>
                
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" pattern="[A-Za-z]{2,20}"
-                 required>
+                <input type="text" id="name" name="name" pattern="[A-Za-z]{2,20}" required>
 
                 <label for="date">Date:</label>
                 <input type="date" id="date" name="date" required min="2024-06-14" max="2024-06-30">
@@ -106,13 +107,44 @@
                 <textarea id="reason" name="reason" rows="4" required></textarea>
     
                 <input type="submit" value="Submit">
-                <div class="button">
-<a href="Home.jsp">Back</a>
-</div>
-                
+                <div class="button"><a href="Home.jsp">Back</a></div>               
             </form>
-            
-            
-    
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script>
+        document.getElementById('start_time').addEventListener('change', function() {
+            var startTime = this.value; 
+            var maxEndTime = new Date('1970-01-01T' + startTime + 'Z');
+            maxEndTime.setHours(maxEndTime.getHours() + 2); 
+            var maxEndTimeFormatted = ('0' + maxEndTime.getHours()).slice(-2) + ':' + ('0' + maxEndTime.getMinutes()).slice(-2);
+            document.getElementById('end_time').setAttribute('max', maxEndTimeFormatted);
+        });
+
+        function validateTimes() {
+            var startTime = document.getElementById('start_time').value;
+            var endTime = document.getElementById('end_time').value;
+
+            var start = new Date('1970-01-01T' + startTime + 'Z');
+            var end = new Date('1970-01-01T' + endTime + 'Z');
+
+        
+            var maxEndTime = new Date(start.getTime());
+            maxEndTime.setHours(maxEndTime.getHours() + 2);
+
+            if (end > maxEndTime) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'End time cannot be more than two hours after start time!',
+                });
+                return false; 
+            }
+
+            return true; 
+        }
+    </script>
 </body>
 </html>

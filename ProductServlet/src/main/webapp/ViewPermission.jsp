@@ -213,15 +213,16 @@
       </div>
     </div>
   </nav>
-   <form action="SearchNames" method="post">  
-         <input style="margin-left:40%;margin-top:2%;margin-bottom:1%" type="text" name="empcode" placeholder="Search EmpCode">      
-        <input type="submit" value="Search">
-    </form>
+  
 <body>
  
  
     <h1>Employee Permission Details</h1>
-   
+    
+    <form action="SearchNames" method="post">  
+         <input style="margin-left:40%;margin-top:0.3%;margin-bottom:1%" type="text" name="empcode" placeholder="Search EmpCode">      
+        <input type="submit" value="Search">
+    </form>
     <table>
     
         <tr>

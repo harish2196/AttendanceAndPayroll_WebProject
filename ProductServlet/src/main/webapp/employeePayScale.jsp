@@ -203,7 +203,7 @@
     </div>
   </nav>
   <body>
-    <h2 style="margin-left:38%;">Employee Pay Scales</h2>
+    <h2 style="margin-left:38%;margin-top:2%;">Employee Pay Scales</h2>
     <table border="1">
         <tr>
             <th>Employee Code</th>

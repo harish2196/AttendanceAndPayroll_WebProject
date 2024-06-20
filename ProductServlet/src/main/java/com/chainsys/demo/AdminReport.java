@@ -2,6 +2,7 @@ package com.chainsys.demo;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,8 +33,15 @@ public class AdminReport extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
+		  try {
+	            ArrayList<User> userList = QueryManager.readReports();
+	            request.setAttribute("userList", userList);
+	            request.getRequestDispatcher("/displayReports.jsp").forward(request, response);
+	        } catch (ClassNotFoundException | SQLException e) {
+	            throw new ServletException(e);
+	        }
+	    }
+	
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

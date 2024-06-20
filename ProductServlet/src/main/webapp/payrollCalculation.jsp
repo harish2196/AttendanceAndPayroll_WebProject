@@ -1,80 +1,73 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="com.chainsys.demo.User"%>
 <%@page import="com.chainsys.demo.QueryManager"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Payroll Information</title>
-     <style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+       
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 20px;
+            padding: 20px;
         }
-
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
         table {
             width: 100%;
-            border-collapse: collapse;
             margin-top: 20px;
-            background-color: #fff;
+            border-collapse: collapse;
+        }
+        table th, table td {
             border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 10px;
+            padding: 8px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
         }
-
-        th {
+        table th {
             background-color: #f2f2f2;
-            color: #333;
         }
-
-        tr:hover {
-            background-color: lightgrey;
+        table tr:hover {
+            background-color: #f5f5f5;
         }
     </style>
 </head>
 <body>
-    <h2 style="text-align: center;">Employee Payroll Information</h2> 
-    <table>
-        <tr>
-            <th>Employee Code</th>
-            <th>Employee Name</th>
-             <th>Employee Email</th>
-            <th>Permission Count</th>
-            <th>Sick Leave Days</th>
-            <th>Casual Leave Days</th>
-            <th>Total Check-in Count</th>
-            <th>Allocate salary</th>
-         
-        </tr>
-        <%
-            User user = (User) session.getAttribute("user");
-            if (user != null) {
-        %>
-                <tr>
-                    <td><%= user.getEmpCode() %></td>
-                      <td><%= user.getName()%></td>
-                        <td><%= user.getEmail() %></td>
-                    <td><%= user.getPermissionCount() %></td>
-                    <td><%= user.getSickLeaveDays() %></td>
-                    <td><%= user.getCasualLeaveDays() %></td>
-                    <td><%= user.getTotalCheckinCount() %></td>
-                    <td><%= user.getAllocate_salary() %></td>
-            
-                </tr>
-        <%
-            }
-        %>
-    </table>
-   
+    <div class="container">
+        <h2 class="text-center" style="color:dodgerblue">Employee Payroll Information</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Employee Code</th>
+                        <th>Employee Name</th>
+                        <th>Employee Email</th>
+                        <th>Permission Count</th>
+                        <th>Sick Leave Days</th>
+                        <th>Casual Leave Days</th>
+                        <th>Total Check-in Count</th>
+                        <th>Allocate Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% User user = (User) session.getAttribute("user");
+                       if (user != null) { %>
+                        <tr>
+                            <td><%= user.getEmpCode() %></td>
+                            <td><%= user.getName() %></td>
+                            <td><%= user.getEmail() %></td>
+                            <td><%= user.getPermissionCount() %></td>
+                            <td><%= user.getSickLeaveDays() %></td>
+                            <td><%= user.getCasualLeaveDays() %></td>
+                            <td><%= user.getTotalCheckinCount() %></td>
+                            <td><%= user.getAllocate_salary() %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

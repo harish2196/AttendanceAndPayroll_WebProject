@@ -109,6 +109,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
         }
+       
 
         .card:hover {
             transform: translateY(-5px);
@@ -133,20 +134,47 @@
         }
        
         button:hover {
-            background-color: darkolivegreen; 
+            background-color: olive; 
         }
+         .card1 {
+            background: linear-gradient(180deg, #6ab04c, #ccf05d);
+            width: 25%;
+            padding: 20px;
+            border-radius: 10px;
+         margin-top:4.5%;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+       
+
+        .card1:hover {
+            transform: translateY(-5px);
+        }
+
+        .card1 i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .card1 h3 {
+            margin: 10px 0;
+        }
+        
     </style>
 </head>
 <body>
     <div class="sidebar">
-        <img src="images/a30.jpg" alt="User">
+    
+        <img src="images/a30.jpg" alt="User"> 
                <h3><p style="color: black;">Welcome, <%= session.getAttribute("name") %></p></h3>
 
         <nav>
             <ul>
                 <li><a href="AdminDashboard.jsp"><i class="fas fa-home"></i> Dashboard</a></li>
                 <li><a href="Contact.jsp"><i class="fas fa-user"></i> Contact</a></li>
-                <li><a href="Contact.jsp"><i class="fas fa-comment"></i> Comments</a></li>
+               
                 <li><a href="switch.jsp"><i class="fas fa-envelope"></i> Messages</a></li>
                
                 <li> <form action="Login" method="get">  
@@ -183,11 +211,17 @@
                   <form action="PayrollDeduction" class="a1" method="post">
     <button style="font-size: 17px;font-weight: bold;color:black;" type="submit" value="submit">View Details</button>            
 </form>
-            </div>
-            
+            </div>      
             
         </div>
-    </div>
+ 
+     <div class="card1">       
+                <i class="fas fa-comment"></i>
+                <h3>Comments</h3>
+                  <form action="AdminReport" class="a1" method="get">
+    <button style="font-size: 17px;font-weight: bold;color:black;" type="submit" value="submit">View Details</button>            
+</form>
+          </div>  </div>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>

@@ -86,7 +86,7 @@ public class ProjectDemo extends HttpServlet {
 	        preparedStatement.setBytes(6, user.getImageData());
 
 	        int randomNumber = 1000 + (int) (Math.random() * 9000);
-	        preparedStatement.setInt(7, randomNumber); // Corrected index
+	        preparedStatement.setInt(7, randomNumber); 
 
 	        int rowCount = preparedStatement.executeUpdate();
 	        if (rowCount > 0) {

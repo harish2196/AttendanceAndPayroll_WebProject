@@ -13,7 +13,8 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f8f9fa;
+            background-color:#17a2b8;
+;
         }
         .survey-form {
             background: white;
@@ -69,9 +70,9 @@
             <button style="margin-left: 159%;" type="submit" class="btn btn-primary">Submit</button>
     
         </div>
-       <div class="btn2"> <a href="Home.jsp">
-            <button style="background-color: firebrick;margin-left: 215%;" type="Submit" class="btn btn-primary">Back</button>
-        </a></div>
+       <div class="btn2"> 
+            <button style="background-color: firebrick; margin-left: 215%;" onclick="window.location.href='Home.jsp'" type="button" class="btn btn-primary">Back</button>
+        </div>
         </div>
              </div>
             </form>
