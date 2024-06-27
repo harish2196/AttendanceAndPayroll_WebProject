@@ -178,7 +178,7 @@
                 <li><a href="switch.jsp"><i class="fas fa-envelope"></i> Messages</a></li>
                
                 <li> <form action="Login" method="get">  
-        <a href="http://localhost:8080/ProductServlet/"><i class="fas fa-sign-out-alt"></i> <input type="submit" style="background-color:transparent;border:none;color:white;" value="Logout"></a>
+          <a href="http://localhost:8080/ProductServlet/"> <i class="fas fa-sign-out-alt"></i> <input type="submit" style="background-color:transparent;border:none;color:white;" value="Logout"></a>
     </form>
     </li>
             </ul>
